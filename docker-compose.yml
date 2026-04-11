@@ -1,0 +1,9 @@
+services:
+  qml:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      QISKIT_IBM_TOKEN: ${QISKIT_IBM_TOKEN}
+    volumes:
+      - .:/app

@@ -79,4 +79,34 @@ After training, the circuit is transpiled for the selected IBM backend and evalu
 - If you only want to explore the simulation path, you can run the notebook up to the local estimator training section.
 - The notebook is intended to be executed sequentially because later cells depend on variables defined earlier.
 
+## Docker
+
+The project can also be run in a container.
+
+Build the image:
+
+```bash
+docker build -t qml-qvc-qnn .
+```
+
+Or start it with Docker Compose:
+
+```bash
+docker compose up --build
+```
+
+Before using Docker Compose, set `QISKIT_IBM_TOKEN` in your shell or in a local `.env` file.
+
+Start Jupyter inside the container:
+
+```bash
+docker run --rm -it -p 8888:8888 \
+	-e QISKIT_IBM_TOKEN=your_ibm_token_here \
+	qml-qvc-qnn
+```
+
+Then open the Jupyter URL printed in the terminal and run `Training_QNN.ipynb` from the container filesystem.
+
+If you prefer to work from the local folder, Docker Compose mounts the workspace into the container so notebook changes are saved on your machine.
+
 
